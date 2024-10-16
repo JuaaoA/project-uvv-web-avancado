@@ -1,0 +1,11 @@
+<p>lista-mensagem works!</p>
+
+<div class="lista_mensagem_container">
+
+    @for (msg of this.servico.getMensagens(); track $index) {
+        <app-mensagem [modelo]="msg"></app-mensagem>
+    } @empty {
+        Sem mensagens
+    }
+
+</div>
