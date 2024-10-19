@@ -1,9 +1,9 @@
 <p>lista-mensagem works!</p>
 
-<div class="lista_mensagem_container">
+<div ngModel class="lista_mensagem_container">
 
-    @for (msg of this.servico.getMensagens(); track $index) {
-        <app-mensagem [modelo]="msg"></app-mensagem>
+    @for (msg of this.messageslist; track $index) {
+        <app-mensagem [modelo]="msg" ngModel ></app-mensagem>
     } @empty {
         Sem mensagens
     }

@@ -9,7 +9,6 @@ import { ModeloMensagem } from '../mensagem/mensagem.model';
   imports: [FormsModule],
   templateUrl: './input-mensagem.component.html',
   styleUrl: './input-mensagem.component.css',
-  providers: [ServicoMensagens]
 })
 export class InputMensagemComponent {
   private servico = inject(ServicoMensagens);
@@ -21,5 +20,5 @@ export class InputMensagemComponent {
     this.servico.adicionarMensagem(mensagemCriada);
   
     form.resetForm();
-  } 
+  }
 }

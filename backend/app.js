@@ -3,8 +3,21 @@ const bodyParser = require("body-parser");
 var path = require('path');
 
 var appRoutes = require('./routes/app');
+const messageRoutes = require('./routes/messages')
+const userRoutes = require('./routes/user')
+
+const mongoose = require("mongoose");
 
 const app = express();
+
+// Conectar com o banco
+mongoose.connect('mongodb://127.0.0.1:27017/node-angular')
+  .then(() => {
+    console.log("deu certo a conexao com o banco")
+  })
+  .catch((error) => {
+    console.log("deu erro a conexão com o banco:" + error)
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +36,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/message', messageRoutes)
+app.use('/user', userRoutes)
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler 

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ModeloMensagem } from './mensagem.model';
+import { ServicoMensagens } from './mensagem.service';
 
 @Component({
   selector: 'app-mensagem',
@@ -11,4 +12,14 @@ import { ModeloMensagem } from './mensagem.model';
 export class MensagemComponent {
 
   @Input() modelo : ModeloMensagem = new ModeloMensagem();
+
+  constructor(private servico : ServicoMensagens) {}
+
+  ApagarSelf() {
+    this.servico.deletarMensagem(this.modelo);
+  }
+
+  EditSelf() {
+    this.servico.editarMensagem(this.modelo, "EU QUERO COMER BANANA")
+  }
 }

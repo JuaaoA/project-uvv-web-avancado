@@ -4,5 +4,15 @@
 
     margin: 5px;
     padding: 5px;
-    display: inline-block;
+    display: block;
+
+    width: 600px;
+}
+
+.detalhes_mensagem {
+    display: inline;
+}
+
+.autor_mensagem{
+    display: inline;
 }

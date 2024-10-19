@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, input, Input } from '@angular/core';
 import { ModeloMensagem } from '../mensagem/mensagem.model';
 import { MensagemComponent } from '../mensagem/mensagem.component';
 import { ServicoMensagens } from '../mensagem/mensagem.service';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-lista-mensagem',
@@ -10,16 +11,16 @@ import { FormsModule } from '@angular/forms';
   imports: [MensagemComponent],
   templateUrl: './lista-mensagem.component.html',
   styleUrl: './lista-mensagem.component.css',
-  providers: [ServicoMensagens],
+  
 })
 
 export class ListaMensagemComponent implements OnInit {
 
   //private servico = inject(ServicoMensagens);
 
-  constructor(public servico : ServicoMensagens) {}
-
-  messageslist : ModeloMensagem[] = []
+  constructor(public servico : ServicoMensagens, private alteracao : ChangeDetectorRef) {}
+  
+  @Input() messageslist : ModeloMensagem[] = []
 
   ngOnInit(): void {
       this.messageslist = this.servico.getMensagens();
