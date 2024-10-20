@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 var path = require('path');
 
+const mongoose = require("mongoose");
+
 var appRoutes = require('./routes/app');
 const messageRoutes = require('./routes/messages')
 const userRoutes = require('./routes/user')
-
-const mongoose = require("mongoose");
 
 const app = express();
 

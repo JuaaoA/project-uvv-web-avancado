@@ -1,13 +1,19 @@
-<p>input-mensagem works!</p>
-
 <div class="input-container">
     <form (ngSubmit)="onSubmit(refLocalForm)" #refLocalForm="ngForm" ngNativeValidate>
         <input type="text" placeholder="Insira sua mensagem..." ngModel name="formMensagem">
 
         <input type="text" ngModel name="formAutor" placeholder="Autor">
 
+        <select name="formGender" id="" ngModel>
+            <option value="M">M</option>
+            <option value="F">F</option>
+            <option value="?">?</option>
+        </select>
+
+        <input name="formAge" type="number" id="" ngModel placeholder="Idade">
+
+        <input name="formColor" type="color" ngModel>
+
         <button type="submit">Enviar</button>
     </form>
-
-    
 </div>

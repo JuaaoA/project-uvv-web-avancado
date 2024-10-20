@@ -23,6 +23,25 @@ export class ListaMensagemComponent implements OnInit {
   @Input() messageslist : ModeloMensagem[] = []
 
   ngOnInit(): void {
+      this.servico.getMessages()
+        .subscribe({
+          next: (dadosSucesso: any) => {
+            console.log(dadosSucesso.myMsgSucesso);
+            console.log({conteudo: dadosSucesso.objSMessageSRecuperadoS[0].conteudo});
+            console.log({id: dadosSucesso.objSMessageSRecuperadoS[0].messageId});
+            
+            this.servico.setMensagens(dadosSucesso.objSMessageSRecuperadoS);
+
+            this.messageslist = dadosSucesso.objSMessageSRecuperadoS;
+          },
+          error: (dadosErro) => {
+            console.log(`$== !!Error (subscribe): ${dadosErro.info_extra} ==`);
+            console.log(dadosErro);
+          }
+        });
+    
+    setInterval(() => {
       this.messageslist = this.servico.getMensagens();
+    }, 800)
   }
 }

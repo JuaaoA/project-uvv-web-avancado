@@ -1,16 +1,18 @@
-<div class="mensagem_container">
-
+<div class="mensagem_container" [style.background]="modelo.color">
+    
     <div class="conteudo_mensagem">
-        <p>
-            {{ modelo.conteudo }}
+        <img src="../../assets/lista-icones/3.jpg" alt="deu erro" class="imagem_autor">
+
+        <p class="conteudo">
+            Mensagem: {{ modelo.conteudo }}
         </p>
     </div>
 
     <div class="detalhes_mensagem">
 
-        <span class="autor_mensagem">{{ modelo.autor }}</span>
+        <span class="autor_mensagem">Autor: {{ modelo.autor }}</span>
 
-        <img src="" alt="" class="imagem_autor">
+        <span> | Sexo: {{ modelo.gender }} | Idade: {{ modelo.idade }} |</span>
 
         <div class="botoes_mensagem">
             <a href="#" class="botao_mensagem" (click)="EditSelf()">Editar</a>

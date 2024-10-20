@@ -3,9 +3,30 @@ var router = express.Router();
 
 const Message = require('../models/message')
 
+router.get('/', async function (req, res, next) {
+    try {
+        const messageFindTodos = await Message.find({});
+
+        res.status(200).json({
+            myMsgSucesso: "Recuperou tudo paizao, pode ver ai",
+            objSMessageSRecuperadoS: messageFindTodos
+        });
+    }
+    catch (err) {
+        return res.status(500).json({
+            myErrorTitle: "Serve-side: Um erro aconteceu ao buscar as mensagens",
+            myError: err
+        })
+    }
+});
+
 router.post('/', async function (req, res, next) {
     const messageObj = new Message({
-        content: req.body.content
+        content: req.body.conteudo,
+        user: req.body.autor,
+        gender: req.body.gender,
+        age: req.body.idade,
+        color: req.body.color
     })
 
     try {

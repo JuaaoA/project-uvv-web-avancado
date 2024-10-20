@@ -10,9 +10,28 @@
 }
 
 .detalhes_mensagem {
-    display: inline;
+    display: flex;
+    justify-content: space-between;
 }
 
 .autor_mensagem{
     display: inline;
+}
+
+.imagem_autor {
+    width: 65px;
+    display: flex;
+    border-radius: 80px;
+}
+
+.conteudo_mensagem > * {
+    display: inline;
+}
+
+.conteudo_mensagem > p {
+    padding-bottom: 50px;
+}
+
+.botoes_mensagem > * {
+    margin: 5px;;
 }
