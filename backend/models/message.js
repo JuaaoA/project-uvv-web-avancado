@@ -6,7 +6,8 @@ const schema = new Schema({
     user: {type: String},
     gender: {type: String},
     age: {type: String},
-    color: {type: String}
+    color: {type: String},
+    icone: {type: String}
 })
 
 module.exports = mongoose.model('Message', schema)

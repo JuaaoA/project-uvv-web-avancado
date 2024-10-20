@@ -5,6 +5,7 @@ export class ModeloMensagem {
         public gender?: string,
         public idade?: string,
         public color?: string,
+        public icone?: string,
         public _id?: string,
         public messageId?: string,
     ) {}

@@ -3,6 +3,7 @@ import { ModeloMensagem } from "./mensagem.model";
 import { HttpClient } from "@angular/common/http";
 import { catchError, Observable, BehaviorSubject, map } from "rxjs";
 import { routes } from "../app.routes";
+import { MensagemComponent } from "./mensagem.component";
 
 @Injectable({providedIn: 'root'})
 export class ServicoMensagens {
@@ -22,9 +23,12 @@ export class ServicoMensagens {
         })
     }
 
-    adicionarMensagem(mensagem : ModeloMensagem) {
+    adicionarMensagemServico(mensagem : ModeloMensagem)
+    {
         this.todasMensagens.push(mensagem)
-        
+    }
+
+    adicionarMensagem(mensagem : ModeloMensagem) {
         return this.http.post<any>(`${this.baseUrl}/message`, mensagem).pipe(
             catchError((e) => this.errorHandler(e, "adicionarMensagem()"))
         );
@@ -32,11 +36,25 @@ export class ServicoMensagens {
 
     deletarMensagem(mensagem : ModeloMensagem) {
         this.todasMensagens.splice(this.todasMensagens.indexOf(mensagem), 1);
+
+        return this.http.post<any>(`${this.baseUrl}/message/delete`, mensagem).pipe(
+            catchError((e) => this.errorHandler(e, "deletarMensagem()"))
+        )
     }
 
-    editarMensagem(target : ModeloMensagem, novaMensagem : string)
-    {
-        this.todasMensagens[this.todasMensagens.indexOf(target)].conteudo = novaMensagem;
+    editarMensagemServico(old : ModeloMensagem, target: any) {
+        // Editar a mensagem pelo frontend
+        this.todasMensagens[this.todasMensagens.indexOf(old)].conteudo = target.content;
+    }
+
+    editarMensagem(target : ModeloMensagem, novaMensagem : string) {
+
+        // Editar o modelo da mensagem antes de enviá-la para o backend
+        target.conteudo = novaMensagem;
+
+        return this.http.patch<any>(`${this.baseUrl}/message/edit`, target).pipe(
+            catchError((e) => this.errorHandler(e, "editarMensagem()"))
+        )
     }
 
     getMensagens()
@@ -62,7 +80,7 @@ export class ServicoMensagens {
                 let transformedCastMessagesModelFrontend: ModeloMensagem[] = [];
                 for (let msg of messageSResponseRecebida) {
                     transformedCastMessagesModelFrontend.push(
-                        new ModeloMensagem(msg.content, msg.user, msg.gender, msg.age, msg.color, msg._id));
+                        new ModeloMensagem(msg.content, msg.user, msg.gender, msg.age, msg.color,msg.icone, msg._id));
                 }
 
                 responseRecebida.objSMessageSRecuperadoS = [...transformedCastMessagesModelFrontend]

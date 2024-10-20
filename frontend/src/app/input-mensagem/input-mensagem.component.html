@@ -1,19 +1,40 @@
 <div class="input-container">
     <form (ngSubmit)="onSubmit(refLocalForm)" #refLocalForm="ngForm" ngNativeValidate>
-        <input type="text" placeholder="Insira sua mensagem..." ngModel name="formMensagem">
 
-        <input type="text" ngModel name="formAutor" placeholder="Autor">
+        <input type="text" placeholder="Insira sua mensagem..." ngModel name="formMensagem" required class="campo_mensagem">
 
-        <select name="formGender" id="" ngModel>
-            <option value="M">M</option>
-            <option value="F">F</option>
-            <option value="?">?</option>
-        </select>
+        <div class="perfil_dados">
+            <div>Dados do perfil</div>
 
-        <input name="formAge" type="number" id="" ngModel placeholder="Idade">
+            <input type="text" ngModel name="formAutor" placeholder="Autor" required class="campo_autor">
+    
+            <select name="formGender" id="" ngModel class="campo_gender">
+                <option value="M">M</option>
+                <option value="F">F</option>
+                <option value="?">?</option>
+            </select>
 
-        <input name="formColor" type="color" ngModel>
+            <input name="formAge" type="number" id="" ngModel placeholder="Idade" class="campo_idade">
+        </div>
 
-        <button type="submit">Enviar</button>
+        <div class="container_color">
+            <div>Insira a cor da mensagem</div>
+
+            <input name="formColor" type="color" ngModel class="color_input">
+        </div>
+        
+        <div>
+            <div>Escolha o icone</div>
+
+            <select name="formIcon" id="" ngModel>
+                <option value="1">Caveira</option>
+                <option value="2">Chiclete</option>
+                <option value="3">Macaco</option>
+                <option value="4">Panda</option>
+                <option value="5">Mina</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="botao_enviar">Enviar</button>
     </form>
 </div>

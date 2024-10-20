@@ -33,5 +33,24 @@
 }
 
 .botoes_mensagem > * {
-    margin: 5px;;
+    margin: 5px;
+    background-color: black;
+    text-decoration: none;
+    color: blanchedalmond;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    border-radius: 5px;
+}
+
+.botao_mensagem:hover {
+    border: 1px solid;
+    border-color: white;
+}
+.botao_mensagem:active {
+    background-color: blanchedalmond;
+    color: black;
 }

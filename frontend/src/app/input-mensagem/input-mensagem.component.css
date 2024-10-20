@@ -1,0 +1,37 @@
+.campo_mensagem {
+    display: block;
+    width: 600px;
+    height: 50px;
+    font-size: 17px;
+}
+
+form > * {
+    margin: 5px;
+}
+
+.botao_enviar {
+    display: block;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+}
+
+form > div {
+    margin: 15px;
+}
+
+.perfil_dados {
+    display: inline;
+}
+
+.perfil_dados > * {
+    margin: 5px;
+}
+
+.campo_gender {
+    width: 50px;
+}
+
+.campo_idade {
+    width: 80px;
+}

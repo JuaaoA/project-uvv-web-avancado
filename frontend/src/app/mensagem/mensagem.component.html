@@ -1,8 +1,32 @@
 <div class="mensagem_container" [style.background]="modelo.color">
-    
     <div class="conteudo_mensagem">
-        <img src="../../assets/lista-icones/3.jpg" alt="deu erro" class="imagem_autor">
 
+        @switch (modelo.icone) {
+            @case ("1") {
+                <img src="../../assets/lista-icones/1.jpg" alt="deu erro" class="imagem_autor">
+            }
+
+            @case ("2") {
+                <img src="../../assets/lista-icones/2.jpg" alt="deu erro" class="imagem_autor">
+            }
+
+            @case ("3") {
+                <img src="../../assets/lista-icones/3.jpg" alt="deu erro" class="imagem_autor">
+            }
+
+            @case ("4") {
+                <img src="../../assets/lista-icones/4.jpg" alt="deu erro" class="imagem_autor">
+            }
+
+            @case ("5") {
+                <img src="../../assets/lista-icones/5.jpg" alt="deu erro" class="imagem_autor">
+            }
+
+            @default {
+                <img src="../../assets/lista-icones/3.jpg" alt="deu erro" class="imagem_autor">
+            }
+        }
+        
         <p class="conteudo">
             Mensagem: {{ modelo.conteudo }}
         </p>
