@@ -14,7 +14,7 @@
                 <option value="?">?</option>
             </select>
 
-            <input name="formAge" type="number" id="" ngModel placeholder="Idade" class="campo_idade">
+            <input name="formAge" type="number" id="" ngModel placeholder="Idade" class="campo_idade" [min]="1" [max]="200">
         </div>
 
         <div class="container_color">

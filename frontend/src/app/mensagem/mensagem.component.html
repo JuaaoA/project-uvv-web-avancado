@@ -39,10 +39,18 @@
         <span> | Sexo: {{ modelo.gender }} | Idade: {{ modelo.idade }} |</span>
 
         <div class="botoes_mensagem">
-            <a href="#" class="botao_mensagem" (click)="EditSelf()">Editar</a>
+            <a href="#" class="botao_mensagem" (click)="ToggleEdit()">Editar</a>
             
             <a href="#" class="botao_mensagem" (click)="ApagarSelf()">Apagar</a>
         </div>
     </div>
+
+    @if (estaEditando) {
+        <form (ngSubmit)="onSubmit(refLocalForm)" class="botoes_mensagem" #refLocalForm="ngForm" ngNativeValidate>
+            <input type="text" placeholder="Informe a nova mensagem..." [defaultValue]="modelo.conteudo" ngModel name="formMensagemEditada">
+
+            <button class="botao_mensagem" type="submit">Atualizar</button>
+        </form>
+    }
 
 </div>
